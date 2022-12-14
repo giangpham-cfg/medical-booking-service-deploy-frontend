@@ -19,27 +19,27 @@ class MedicalFacility extends Component {
 
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 1</div>
                             </div>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 2</div>
                             </div>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 3</div>
                             </div>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 4</div>
                             </div>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 5</div>
                             </div>
-                            <div className='specialty-customize'>
+                            <div className='section-customize'>
                                 <div className='bg-image section-medical-facility'></div>
                                 <div>Bệnh viện Thu Cúc 6</div>  
                             </div>     

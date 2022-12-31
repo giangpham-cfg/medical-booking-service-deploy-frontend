@@ -38,6 +38,7 @@ class UserRedux extends Component {
     render() {
         let genders = this.state.genderArr;
         let language = this.props.language;
+        let isGetGender = this.props.isLoadingGender;
         return (
             <div className='user-redux-container'>
                 <div className='title'>
@@ -47,6 +48,7 @@ class UserRedux extends Component {
                     <div className='container'>
                         <div className='row'>
                             <div className='col-12 my-3'><FormattedMessage id="manage-user.add"/></div>
+                            <div className='col-12'>{isGetGender === true ? 'Loading genders' : ''}</div>
                             <div className='col-3'>
                                 <label><FormattedMessage id="manage-user.email"/></label>
                                 <input className='form-control' type='email'/>
@@ -120,6 +122,7 @@ const mapStateToProps = state => {
     return {
         language: state.app.language,
         genderRedux: state.admin.genders,
+        isLoadingGender: state.admin.isLoadingGender,
     };
 };
 

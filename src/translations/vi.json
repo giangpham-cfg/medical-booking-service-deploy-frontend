@@ -47,8 +47,9 @@
         "address": "Địa chỉ",
         "gender": "Giới tính",
         "position": "Chức danh",
-        "role": "Mã vai trò",
+        "role": "Vai trò",
         "image": "Ảnh đại diện",
-        "save": "Lưu người dùng"  
+        "save": "Lưu người dùng",
+        "upload-image": "Tải ảnh"
     }
 }

@@ -50,6 +50,7 @@
         "role": "Role ID",
         "image": "Avatar",
         "save": "Save user",
+        "edit": "Edit user",
         "upload-image": "Upload Image"
     }
  

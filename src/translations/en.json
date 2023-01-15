@@ -52,6 +52,10 @@
         "save": "Save user",
         "edit": "Edit user",
         "upload-image": "Upload Image"
+    },
+    "homepage": {
+        "outstanding-doctor": "Outstanding doctors of the week",
+        "more-info": "More info"
     }
  
 }

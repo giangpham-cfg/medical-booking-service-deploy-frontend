@@ -29,8 +29,10 @@ class OutstandingDoctor extends Component {
     }
 
     handleViewDetailDoctor = (doctor) => {
-        console.log('hoi giang: ', doctor)
-        this.props.history.push(`/detail-doctor/${doctor.id}`)
+        // console.log('hoi giang: ', doctor)
+        if(this.props.history) {
+            this.props.history.push(`/detail-doctor/${doctor.id}`)
+        }  
     }
 
     render() {

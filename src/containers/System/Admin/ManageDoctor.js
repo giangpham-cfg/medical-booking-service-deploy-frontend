@@ -110,7 +110,7 @@ class ManageDoctor extends Component {
                 hasOldData: false,
             })
         }
-        console.log(`giang pham:`, res);
+        // console.log(`giang pham:`, res);
     };
 
     handleOnChangeDesc = (event) => {

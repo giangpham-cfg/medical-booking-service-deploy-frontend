@@ -1,7 +1,8 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createNewUserService, getAllUsers, 
-        deleteUserService, editUserService, getTopDoctorHomeService,
-        getAllDoctors, saveDetailDoctorService,
+import {
+    getAllCodeService, createNewUserService, getAllUsers,
+    deleteUserService, editUserService, getTopDoctorHomeService,
+    getAllDoctors, saveDetailDoctorService,
 } from '../../services/userService';
 import { toast } from "react-toastify";
 
@@ -21,7 +22,7 @@ export const fetchGenderStart = () => {
             } else {
                 dispatch(fetchGenderFail());
             }
-        }catch(e) {
+        } catch (e) {
             dispatch(fetchGenderFail());
             console.log('fetchGenderStart error', e)
         }
@@ -64,7 +65,7 @@ export const fetchPositionStart = () => {
             } else {
                 dispatch(fetchPositionFail());
             }
-        }catch(e) {
+        } catch (e) {
             dispatch(fetchPositionFail());
             console.log('fetchPositionFail error', e)
         }
@@ -80,7 +81,7 @@ export const fetchRoleStart = () => {
             } else {
                 dispatch(fetchRoleFail());
             }
-        }catch(e) {
+        } catch (e) {
             dispatch(fetchRoleFail());
             console.log('fetchRoleFail error', e)
         }
@@ -99,7 +100,7 @@ export const createNewUser = (data) => {
                 // toast.error("Create new user error!");
                 dispatch(saveUserFail());
             }
-        }catch(e) {
+        } catch (e) {
             dispatch(saveUserFail());
             console.log('saveUserFail error', e)
         }
@@ -126,7 +127,7 @@ export const fetchAllUsersStart = () => {
                 toast.error("Fetch all users error!");
                 dispatch(fetchAllUsersFail());
             }
-        }catch(e) {
+        } catch (e) {
             toast.error("Fetch all users error!");
             dispatch(fetchAllUsersFail());
             console.log('fetchAllUsersFail error', e)
@@ -155,7 +156,7 @@ export const deleteAUser = (userId) => {
                 toast.error("Delete the user error!");
                 dispatch(deleteUserFail());
             }
-        }catch(e) {
+        } catch (e) {
             toast.error("Delete the user error!");
             dispatch(deleteUserFail());
             console.log('deleteUserFail error', e)
@@ -183,7 +184,7 @@ export const editAUser = (data) => {
                 toast.error("Update the user error!");
                 dispatch(editUserFail());
             }
-        }catch(e) {
+        } catch (e) {
             toast.error("Update the user error!");
             dispatch(editUserFail());
             console.log('editUserFail error', e)
@@ -203,18 +204,18 @@ export const fetchTopDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getTopDoctorHomeService('');
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
                     dataDoctors: res.data
                 })
-            }else {
+            } else {
                 dispatch({
                     type: actionTypes.FETCH_TOP_DOCTORS_FAIL,
                 })
             }
             // console.log('check res top doctor: ', res)
-        }catch(e) {
+        } catch (e) {
             console.log('FETCH_TOP_DOCTORS_FAIL: ', e)
             dispatch({
                 type: actionTypes.FETCH_TOP_DOCTORS_FAIL,
@@ -227,18 +228,18 @@ export const fetchAllDoctors = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllDoctors();
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
                     dataDr: res.data
                 })
-            }else {
+            } else {
                 dispatch({
                     type: actionTypes.FETCH_ALL_DOCTORS_FAIL,
                 })
             }
             // console.log('check res top doctor: ', res)
-        }catch(e) {
+        } catch (e) {
             console.log('FETCH_ALL_DOCTORS_FAIL: ', e)
             dispatch({
                 type: actionTypes.FETCH_ALL_DOCTORS_FAIL,
@@ -251,24 +252,48 @@ export const saveDetailedDoctor = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await saveDetailDoctorService(data);
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 toast.success("Save info detail doctor succeed!");
 
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
                 })
-            }else {
+            } else {
                 toast.error("Save info detail doctor error!");
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
                 })
             }
             // console.log('check res top doctor: ', res)
-        }catch(e) {
+        } catch (e) {
             toast.error("Save info detail doctor error!");
             console.log('SAVE_DETAIL_DOCTOR_FAIL: ', e)
             dispatch({
                 type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
+            })
+        }
+    }
+}
+
+export const fetchAllScheduleTime = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("TIME");
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
+                    dataTime: res.data
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAIL,
+                })
+            }
+            // console.log('check res top doctor: ', res)
+        } catch (e) {
+            console.log('FETCH_ALLCODE_SCHEDULE_TIME_FAIL: ', e)
+            dispatch({
+                type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAIL,
             })
         }
     }

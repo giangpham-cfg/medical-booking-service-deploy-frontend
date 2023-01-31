@@ -7,20 +7,21 @@ const initialState = {
     positions: [],
     users: [],
     topDoctors: [],
-    allDoctors: []
+    allDoctors: [],
+    allScheduleTime: [],
 }
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_GENDER_START:
-            let copyState = {...state};
+            let copyState = { ...state };
             copyState.isLoadingGender = true;
             return {
                 ...copyState
             }
 
         case actionTypes.FETCH_GENDER_SUCCESS:
-            
+
             state.genders = action.data
             state.isLoadingGender = false;
             return {
@@ -28,7 +29,7 @@ const adminReducer = (state = initialState, action) => {
             }
 
         case actionTypes.FETCH_GENDER_FAIL:
-            
+
             state.isLoadingGender = false;
             state.genders = [];
             return {
@@ -52,7 +53,7 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state
             }
-    
+
         case actionTypes.FETCH_ROLE_FAIL:
             state.roles = [];
             return {
@@ -66,31 +67,43 @@ const adminReducer = (state = initialState, action) => {
             }
 
         case actionTypes.FETCH_ALL_USERS_FAIL:
-            state.users = [];  
+            state.users = [];
             return {
                 ...state
             }
-        
+
         case actionTypes.FETCH_TOP_DOCTORS_SUCCESS:
-            state.topDoctors = action.dataDoctors;  
+            state.topDoctors = action.dataDoctors;
             return {
                 ...state
             }
 
         case actionTypes.FETCH_TOP_DOCTORS_FAIL:
-            state.topDoctors = [];  
+            state.topDoctors = [];
             return {
                 ...state
             }
 
         case actionTypes.FETCH_ALL_DOCTORS_SUCCESS:
-            state.allDoctors = action.dataDr;  
+            state.allDoctors = action.dataDr;
             return {
                 ...state
             }
-    
+
         case actionTypes.FETCH_ALL_DOCTORS_FAIL:
-            state.allDoctors = [];  
+            state.allDoctors = [];
+            return {
+                ...state
+            }
+
+        case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS:
+            state.allScheduleTime = action.dataTime;
+            return {
+                ...state
+            }
+
+        case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAIL:
+            state.allScheduleTime = [];
             return {
                 ...state
             }

@@ -19,6 +19,12 @@
         .btn-schedule {
             padding: 5px 15px;
             border: 1px solid grey;
+            display: flex;
+            align-items: center;
+
+            &.active {
+               background-color: orange; 
+            }
         }
     }
 

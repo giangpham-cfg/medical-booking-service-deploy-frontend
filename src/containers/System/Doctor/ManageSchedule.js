@@ -9,6 +9,7 @@ import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from "react-toastify";
 import _ from 'lodash';
+import { saveBulkScheduleDoctor } from '../../../services/userService';
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class ManageSchedule extends Component {
         this.state = {
             listDoctors: [],
             selectedDoctor: {},
-            currentDate: new Date(),
+            currentDate: '',
             rangeTime: [],
         }
     }
@@ -24,22 +25,6 @@ class ManageSchedule extends Component {
     componentDidMount() {
         this.props.fetchAllDoctors();
         this.props.fetchAllScheduleTime();
-    }
-
-    buildDataInputSelect = (inputData) => {
-        let result = [];
-        let { language } = this.props;
-        if (inputData && inputData.length > 0) {
-            inputData.map((item, index) => {
-                let object = {};
-                let labelVi = `${item.lastName} ${item.firstName}`;
-                let labelEn = `${item.firstName} ${item.lastName}`;
-                object.label = language === LANGUAGES.VI ? labelVi : labelEn
-                object.value = item.id;
-                result.push(object)
-            })
-        }
-        return result;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -73,6 +58,24 @@ class ManageSchedule extends Component {
         // }
     }
 
+    buildDataInputSelect = (inputData) => {
+        let result = [];
+        let { language } = this.props;
+        if (inputData && inputData.length > 0) {
+            inputData.map((item, index) => {
+                let object = {};
+                let labelVi = `${item.lastName} ${item.firstName}`;
+                let labelEn = `${item.firstName} ${item.lastName}`;
+                object.label = language === LANGUAGES.VI ? labelVi : labelEn
+                object.value = item.id;
+                result.push(object)
+            })
+        }
+        return result;
+    }
+
+
+
     handleChangeSelect = async (selectedOption) => {
         this.setState({ selectedDoctor: selectedOption });
     };
@@ -97,29 +100,31 @@ class ManageSchedule extends Component {
         }
     }
 
-    handleSaveSchedule = () => {
+    handleSaveSchedule = async () => {
         let { rangeTime, selectedDoctor, currentDate } = this.state;
         let result = [];
-        // if (!currentDate) {
-        //     toast.error("Invalid date!");
-        //     return;
-        // }
+        if (!currentDate) {
+            toast.error("Invalid date!");
+            return;
+        }
 
         if (selectedDoctor && _.isEmpty(selectedDoctor)) {
             toast.error("Invalid selected doctor!");
             return;
         }
 
-        let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
 
+        // let formatedDate = moment(currentDate).unix();
+        let formatedDate = new Date(currentDate).getTime();
         if (rangeTime && rangeTime.length > 0) {
-            let selectedTime = rangeTime.filter(item => item.isSelected === true)
+            let selectedTime = rangeTime.filter(item => item.isSelected === true);
             if (selectedTime && selectedTime.length > 0) {
                 selectedTime.map((schedule, index) => {
                     let object = {};
                     object.doctorId = selectedDoctor.value;
                     object.date = formatedDate;
-                    object.time = schedule.keyMap;
+                    object.timeType = schedule.keyMap;
                     result.push(object);
                 })
             } else {
@@ -127,7 +132,14 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        console.log('check result ', result)
+
+        let res = await saveBulkScheduleDoctor({
+            arrSchedule: result,
+            doctorId: selectedDoctor.value,
+            formatedDate: formatedDate
+        });
+        // console.log('check res:saveBulkScheduleDoctor ', res)
+        // console.log('check result ', result)
     }
 
     render() {

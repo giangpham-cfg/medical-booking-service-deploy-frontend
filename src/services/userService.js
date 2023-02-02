@@ -1,10 +1,10 @@
 import axios from '../axios'
 const handleLoginApi = (email, password) => {
-    return axios.post('/api/login', {email, password}); 
+    return axios.post('/api/login', { email, password });
     // 
 }
 
-const getAllUsers = (inputId) =>{
+const getAllUsers = (inputId) => {
     return axios.get(`/api/get-all-users?id=${inputId}`)
 }
 
@@ -18,9 +18,9 @@ const deleteUserService = (userId) => {
         //   Authorization: authorizationToken
         // },
         data: {
-          id: userId
+            id: userId
         }
-      });
+    });
     // return axios.delete('/api/delete-user', {id: userId})
 }
 
@@ -48,10 +48,13 @@ const getDetailInfoDoctor = (inputId) => {
     return axios.get(`/api/get-detail-doctor-by-id?id=${inputId}`)
 }
 
-export { 
-    handleLoginApi, getAllUsers, 
-    createNewUserService, deleteUserService, 
+const saveBulkScheduleDoctor = (data) => {
+    return axios.post('/api/bulk-create-schedule', data)
+}
+export {
+    handleLoginApi, getAllUsers,
+    createNewUserService, deleteUserService,
     editUserService, getAllCodeService, getTopDoctorHomeService,
     getAllDoctors, saveDetailDoctorService,
-    getDetailInfoDoctor,
+    getDetailInfoDoctor, saveBulkScheduleDoctor,
 } 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import HomeHeader from '../../HomeHeader';
+import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss';
-import { getDetailInfoDoctor } from '../../../../services/userService';
-import { LANGUAGES } from '../../../../utils/constant';
+import { getDetailInfoDoctor } from '../../../services/userService';
+import { LANGUAGES } from '../../../utils/constant';
+import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
 
@@ -29,7 +30,7 @@ class DetailDoctor extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
 
     }
-   
+
     render() {
         // console.log(this.props.match.params.id)
         // console.log('hoi giang state: ', this.state)
@@ -43,14 +44,14 @@ class DetailDoctor extends Component {
         }
         return (
             <>
-                <HomeHeader 
+                <HomeHeader
                     isShowBanner={false}
                 />
                 <div className='doctor-detail-container'>
                     <div className='intro-doctor'>
                         <div
                             className='content-left'
-                            style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})`}}
+                            style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})` }}
                         >
                         </div>
                         <div className='content-right'>
@@ -69,11 +70,18 @@ class DetailDoctor extends Component {
                         </div>
                     </div>
                     <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule
+                                doctorIdFromParent={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}
+                            />
+                        </div>
+                        <div className='content-right'>
 
+                        </div>
                     </div>
                     <div className='detail-info-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.contentHTML
-                            && 
+                            &&
                             <div dangerouslySetInnerHTML={{ __html: detailDoctor.Markdown.contentHTML }}>
 
                             </div>
@@ -90,7 +98,7 @@ class DetailDoctor extends Component {
 
 const mapStateToProps = state => {
     return {
-       language: state.app.language,
+        language: state.app.language,
     };
 };
 

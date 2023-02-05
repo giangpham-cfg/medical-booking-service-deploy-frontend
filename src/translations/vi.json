@@ -65,6 +65,8 @@
         "choose-doctor": "Chọn bác sĩ",
         "choose-date": "Chọn ngày",
         "choose-time": "Chọn giờ",
-        "save": "Lưu thông tin"
+        "save": "Lưu thông tin",
+        "choose-another-day": "Không có lịch hẹn trong ngày này. Vui lòng chọn lại ngày khác!",
+        "schedule": "Lịch khám"
     }
 }

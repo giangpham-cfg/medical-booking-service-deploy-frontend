@@ -65,8 +65,14 @@
         "choose-doctor": "Select a doctor",
         "choose-date": "Select a date",
         "choose-time": "Pick a time slot",
-        "save": "Save info",
-        "choose-another-day": "Time is not available for this day. Please select another day!",
-        "schedule": "Examination schedule"
+        "save": "Save info"
+    },
+    "patient": {
+        "detail-doctor": {
+            "no-schedule": "Time is not available for this day. Please select another day!",
+            "schedule": "Schedule",
+            "select": "Select ",
+            "book-free": " and book appointment (free)"
+        }
     }
 }

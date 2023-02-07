@@ -74,5 +74,14 @@
             "select": "Select ",
             "book-free": " and book appointment (free)"
         }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "Add more information of doctors",
+            "select-doctor": "Select a doctor",
+            "intro": "Introduction",
+            "add": "Add information",
+            "save": "Save information"
+        }
     }
 }

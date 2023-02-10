@@ -32,7 +32,7 @@
             "manage-clinic": "Manage clinics",
             "specialty": "Specialties",
             "manage-specialty": "Manage specialties",
-            "handbook": "Hanbook",
+            "handbook": "Handbook",
             "manage-handbook": "Manage handbook"
         },
         "doctor": {
@@ -81,7 +81,13 @@
             "select-doctor": "Select a doctor",
             "intro": "Introduction",
             "add": "Add information",
-            "save": "Save information"
+            "save": "Save information",
+            "price": "Price",
+            "payment": "Payment method",
+            "province": "Province",
+            "nameClinic": "Clinic centre",
+            "addressClinic": "Clinic's address",
+            "note": "Note"
         }
     }
 }

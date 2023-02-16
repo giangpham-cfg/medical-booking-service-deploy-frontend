@@ -61,7 +61,7 @@ class DoctorSchedule extends Component {
 
             allDays.push(object);
 
-            console.log('checkalsgdfg:', allDays)
+            // console.log('check allDays:', allDays)
 
         }
 

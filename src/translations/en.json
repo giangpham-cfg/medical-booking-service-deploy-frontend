@@ -73,6 +73,13 @@
             "schedule": "Schedule",
             "select": "Select ",
             "book-free": " and book appointment (free)"
+        },
+        "extra-info-doctor": {
+            "text-address": "Clinic's address:",
+            "price": "Examination price: ",
+            "detail": "Show detail",
+            "payment": "Patients can pay by: ",
+            "hide-price": "Hide detail"
         }
     },
     "admin": {

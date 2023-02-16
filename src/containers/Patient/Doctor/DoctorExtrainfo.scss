@@ -24,15 +24,23 @@
     .content-down {
 
         .short-info {
-            
+            text-transform: uppercase;
+
             span {
                 cursor: pointer;
-                color: rgb(38, 160, 231)
+                color: rgb(38, 160, 231);
+                text-transform: lowercase;
+            }
+
+            .currency {
+                margin: 0 5px;
+                color: #333;
             }
         }
 
         .title-price{
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .detail-info {

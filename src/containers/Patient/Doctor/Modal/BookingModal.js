@@ -114,6 +114,19 @@ class BookingModal extends Component {
         return ''
     }
 
+    buildDateBooking = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+
+            let date = language === LANGUAGES.VI ?
+                this.capitalizeFirstLetter(moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY'))
+                :
+                moment.unix(+dataTime.date / 1000).locale('en').format('ddd - DD/MM/YYYY')
+            return `${date}`
+        }
+        return ''
+    }
+
     buildDoctorName = (dataTime) => {
         let { language } = this.props;
         if (dataTime && !_.isEmpty(dataTime)) {
@@ -128,9 +141,10 @@ class BookingModal extends Component {
 
     handleConFirmBooking = async () => {
         //validate input
-        let date = new Date(this.state.birthday).getTime();
+        let birthdate = new Date(this.state.birthday).getTime();
         let timeString = this.buildTimeBooking(this.props.dataTime);
-        let doctorName = this.buildDoctorName(this.props.dataTime)
+        let doctorName = this.buildDoctorName(this.props.dataTime);
+        let date = this.buildDateBooking(this.props.dataTime);
 
         let res = await postPatientBookAppointment({
             fullName: this.state.fullName,
@@ -138,6 +152,7 @@ class BookingModal extends Component {
             email: this.state.email,
             address: this.state.address,
             reason: this.state.reason,
+            birthdate: birthdate,
             date: date,
             selectedGender: this.state.selectedGender.value,
             doctorId: this.state.doctorId,

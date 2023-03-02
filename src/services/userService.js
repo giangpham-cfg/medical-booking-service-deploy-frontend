@@ -79,6 +79,19 @@ const createNewSpecialty = (data) => {
 const getAllSpecialty = () => {
     return axios.get(`/api/get-specialty`)
 }
+
+const deleteSpecialtyService = (specialtyId) => {
+    return axios.delete('/api/delete-specialty', {
+        data: {
+            id: specialtyId
+        }
+    });
+}
+
+const editSpecialtyService = (inputData) => {
+    return axios.put('/api/edit-specialty', inputData)
+}
+
 export {
     handleLoginApi, getAllUsers,
     createNewUserService, deleteUserService,
@@ -88,7 +101,8 @@ export {
     getScheduleDoctorByDate, getExtraInfoDoctorById,
     getProfileDoctorById, postPatientBookAppointment,
     postVerifyBookAppointment, createNewSpecialty,
-    getAllSpecialty
+    getAllSpecialty, deleteSpecialtyService,
+    editSpecialtyService
 }
 
 

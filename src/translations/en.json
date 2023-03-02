@@ -110,5 +110,9 @@
             "addressClinic": "Clinic's address",
             "note": "Note"
         }
+    },
+    "specialty": {
+        "edit": "Edit specialty",
+        "create": "Create speciaty"
     }
 }

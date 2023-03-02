@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import {getAllUsers, createNewUserService, deleteUserService, editUserService} from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 import { emitter } from '../../utils/emitter';
 import ModalEditUser from './ModalEditUser';
@@ -20,16 +20,17 @@ class UserManage extends Component {
 
 
     async componentDidMount() {
-       await this.getAllUserFromReact();
-        // console.log(response);
+        await this.getAllUserFromReact();
+
     }
 
-    getAllUserFromReact = async() => {
+    getAllUserFromReact = async () => {
         let response = await getAllUsers('ALL');
-        if(response && response.errCode === 0) {
+        console.log('check response:', response)
+        if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users
-            }) 
+            })
         }
     }
 
@@ -51,12 +52,12 @@ class UserManage extends Component {
         })
     }
 
-    createNewUser = async(data) => {
-        try{
+    createNewUser = async (data) => {
+        try {
             let response = await createNewUserService(data); // data here is child(ModalUser) push to parent(UserManage)=>data=this.state(from function 'handleAddNewUser')
-            if(response && response.errCode !==0) {
+            if (response && response.errCode !== 0) {
                 alert(response.errMessage)
-            }else {
+            } else {
                 await this.getAllUserFromReact();
                 this.setState({
                     isOpenModalUSer: false
@@ -64,23 +65,23 @@ class UserManage extends Component {
                 emitter.emit('EVENT_CLEAR_MODAL_DATA') //, {'id': 'your id'})
             }
             // console.log('response create user: ', response)
-            }catch (e){ 
-                console.log(e);
+        } catch (e) {
+            console.log(e);
         }
         // console.log('check data from child: ', data)
     }
 
-    handleDeleteUser = async(user) => {
+    handleDeleteUser = async (user) => {
         // console.log('click delete', user)
         try {
             let res = await deleteUserService(user.id);
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 await this.getAllUserFromReact();
-            }else{
+            } else {
                 alert(res.errMessage)
             }
             console.log(res);
-        }catch(e){
+        } catch (e) {
             console.log(e);
         }
     }
@@ -92,27 +93,27 @@ class UserManage extends Component {
         })
     }
 
-    doEditUser = async(user) => {
-        try{
+    doEditUser = async (user) => {
+        try {
             let res = await editUserService(user);
             // console.log('click save user: ', res)
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 this.setState({
-                    isOpenModalEditUser: false,     
+                    isOpenModalEditUser: false,
                 })
                 await this.getAllUserFromReact()
-            }else {
+            } else {
                 alert(res.errMessage)
             }
-        }catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
 
     render() {
 
-       
-        let {arrUsers} = this.state;
+
+        let { arrUsers } = this.state;
         return (
             <div className="users-container">
                 <ModalUser
@@ -132,9 +133,9 @@ class UserManage extends Component {
                 }
                 <div className='title text-center'>Manage users with Giang</div>
                 <div className='mx-1'>
-                    <button 
-                    className='btn btn-primary px-3'
-                    onClick={()=>this.handleAddNewUser()}
+                    <button
+                        className='btn btn-primary px-3'
+                        onClick={() => this.handleAddNewUser()}
                     ><i className="fas fa-plus"></i>Add new users</button>
                 </div>
                 <div className='users-table mt-3 mx-1'>
@@ -148,7 +149,7 @@ class UserManage extends Component {
                                 <th>Adress</th>
                                 <th>Actions</th>
                             </tr>
-                            
+
                             {arrUsers && arrUsers.map((item, index) => {
                                 return (
                                     <tr key={index}>
@@ -157,15 +158,15 @@ class UserManage extends Component {
                                         <td>{item.lastName}</td>
                                         <td>{item.address}</td>
                                         <td>
-                                            <button className='btn-edit' onClick={()=>this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
-                                            <button className='btn-delete'onClick={()=>this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
+                                            <button className='btn-edit' onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
+                                            <button className='btn-delete' onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                 )
                             })
                             }
-                        </tbody>  
-                        
+                        </tbody>
+
                     </table>
                 </div>
             </div>

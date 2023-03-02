@@ -110,5 +110,9 @@
             "addressClinic": "Địa chỉ phòng khám",
             "note": "Ghi chú"
         }
+    },
+    "specialty": {
+        "edit": "Lưu thay đổi",
+        "create": "Tạo chuyên khoa"
     }
 }

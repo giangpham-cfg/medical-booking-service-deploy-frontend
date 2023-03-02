@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import { CommonUtils } from '../../../utils';
-import { createNewSpecialty } from '../../../services/userService';
+import { createNewSpecialty, getAllSpecialty, deleteSpecialtyService, editSpecialtyService } from '../../../services/userService';
 import { toast } from "react-toastify";
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
@@ -15,15 +15,29 @@ class ManageSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             name: '',
             imageBase64: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
+            arrSpecialty: [],
+            hasOldData: false,
+            //     specialtyEdit: {},
         }
     }
 
     async componentDidMount() {
+        await this.getAllSpecialtyData();
+    }
 
+    getAllSpecialtyData = async () => {
+        let res = await getAllSpecialty();
+        // console.log('check response:', res)
+        if (res && res.errCode === 0) {
+            this.setState({
+                arrSpecialty: res.data
+            })
+        }
     }
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
@@ -60,24 +74,84 @@ class ManageSpecialty extends Component {
         }
     }
 
+    handleEditSpecialty = (specialtyInput) => {
+        console.log('check specialtyInput:', specialtyInput)
+        // let { specialtyEdit } = this.state
+        this.setState({
+            id: specialtyInput.id,
+            name: specialtyInput.name,
+            imageBase64: specialtyInput.image,
+            descriptionHTML: specialtyInput.descriptionHTML,
+            descriptionMarkdown: specialtyInput.descriptionMarkdown,
+            hasOldData: true,
+        })
+    }
+
     handleSaveNewSpecialty = async () => {
-        let res = await createNewSpecialty(this.state)
-        if (res && res.errCode === 0) {
-            toast.success('Adding a new specialty succeeds!')
-            this.setState({
-                name: '',
-                imageBase64: '',
-                descriptionHTML: '',
-                descriptionMarkdown: '',
+        let { hasOldData } = this.state;
+        if (hasOldData === false) {
+            let res = await createNewSpecialty({
+                name: this.state.name,
+                imageBase64: this.state.imageBase64,
+                descriptionHTML: this.state.descriptionHTML,
+                descriptionMarkdown: this.state.descriptionMarkdown,
             })
-        } else {
-            toast.error('There is something wrong')
-            console.log('check res:', res)
+            if (res && res.errCode === 0) {
+                toast.success('Adding a new specialty succeeds!')
+                await this.getAllSpecialtyData();
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMarkdown: '',
+                })
+            } else {
+                toast.error('Adding a new specialty fails !')
+                console.log('check res:', res)
+            }
+            // console.log('Giang Pham check state:', this.state)
         }
-        // console.log('Giang Pham check state:', this.state)
+
+        if (hasOldData === true) {
+            let res = await editSpecialtyService({
+                id: this.state.id,
+                name: this.state.name,
+                image: this.state.imageBase64,
+                descriptionHTML: this.state.descriptionHTML,
+                descriptionMarkdown: this.state.descriptionMarkdown,
+            })
+            if (res && res.errCode === 0) {
+                toast.success('Editing the specialty succeeds!')
+                await this.getAllSpecialtyData();
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMarkdown: '',
+                })
+            } else {
+                toast.error('Edititng the specialty fails!')
+                console.log('check res:', res)
+            }
+        }
+    }
+
+    handleDeleteSpecialty = async (specialty) => {
+        // console.log('click delete', specialty)
+        try {
+            let res = await deleteSpecialtyService(specialty.id);
+            if (res && res.errCode === 0) {
+                await this.getAllSpecialtyData();
+            } else {
+                alert(res.errMessage)
+            }
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     render() {
+        let { arrSpecialty, hasOldData } = this.state
 
         return (
             <div className='manage-specialty-container'>
@@ -104,12 +178,48 @@ class ManageSpecialty extends Component {
                         />
                     </div>
                     <div className='col-12'>
-                        <button className='btn-save-specialty'
+                        {/* <button className='btn-save-specialty'
                             onClick={() => this.handleSaveNewSpecialty()}
-                        >Lưu</button>
+                        >Lưu</button> */}
+                        <button className={hasOldData === true ? "btn btn-warning px-3 my-4" : "btn btn-primary px-3 my-4"}
+                            onClick={() => this.handleSaveNewSpecialty()}>
+
+                            {hasOldData === true ?
+                                <FormattedMessage id="specialty.edit" />
+                                :
+                                <FormattedMessage id="specialty.create" />
+                            }
+
+                        </button>
                     </div>
 
                 </div>
+                <div className='specialty-table mt-3 mx-1'>
+
+                    <table id="customers">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+
+                            {arrSpecialty && arrSpecialty.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.name}</td>
+                                        <td>
+                                            <button className='btn-edit' onClick={() => this.handleEditSpecialty(item)}><i className="fas fa-pencil-alt"></i></button>
+                                            <button className='btn-delete' onClick={() => this.handleDeleteSpecialty(item)}><i className="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+
             </div>
         );
     }

@@ -112,7 +112,13 @@
         }
     },
     "specialty": {
+        "manage-specialty": "Quản lý chuyên khoa",
+        "specialty-name": "Tên chuyên khoa",
+        "specialty-picture": "Ảnh chuyên khoa",
+        "upload-image": "Tải ảnh",
         "edit": "Lưu thay đổi",
-        "create": "Tạo chuyên khoa"
+        "create": "Tạo chuyên khoa",
+        "name": "Tên chuyênn khoa",
+        "action": "Chức năng"
     }
 }

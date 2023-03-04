@@ -112,7 +112,13 @@
         }
     },
     "specialty": {
+        "manage-specialty": "Manage specialties",
+        "specialty-name": "Name of specialty",
+        "specialty-picture": "Picture of specialty",
+        "upload-image": "Upload Image",
         "edit": "Edit specialty",
-        "create": "Create speciaty"
+        "create": "Create speciaty",
+        "name": "Name of specialty",
+        "action": "Actions"
     }
 }

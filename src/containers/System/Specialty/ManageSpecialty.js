@@ -22,7 +22,8 @@ class ManageSpecialty extends Component {
             descriptionMarkdown: '',
             arrSpecialty: [],
             hasOldData: false,
-            //     specialtyEdit: {},
+            previewimgURL: '',
+            // isOpen: false,
         }
     }
 
@@ -61,22 +62,46 @@ class ManageSpecialty extends Component {
         })
     }
 
+    // handleOnchangeImage = async (event) => {
+    //     let data = event.target.files;
+    //     let file = data[0];
+    //     if (file) {
+    //         let base64 = await CommonUtils.getBase64(file); //encode 
+    //         // console.log('base64 image: ', base64)
+
+    //         this.setState({
+    //             imageBase64: base64,
+    //         })
+    //     }
+    // }
+
     handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if (file) {
             let base64 = await CommonUtils.getBase64(file); //encode 
             // console.log('base64 image: ', base64)
-
+            let objectUrl = URL.createObjectURL(file);
             this.setState({
-                imageBase64: base64,
+                previewimgURL: objectUrl,
+                imageBase64: base64
             })
         }
     }
 
+    // openPreviewImage = () => {
+    //     if (!this.state.previewimgURL) return;
+    //     this.setState({
+    //         isOpen: true
+    //     })
+    // }
+
     handleEditSpecialty = (specialtyInput) => {
         console.log('check specialtyInput:', specialtyInput)
-        // let { specialtyEdit } = this.state
+        // let image64 = '';
+        // if (specialtyInput.image) {
+        //     image64 = new Buffer(specialtyInput.image, 'base64').toString('binary'); //decode
+        // }
         this.setState({
             id: specialtyInput.id,
             name: specialtyInput.name,
@@ -84,6 +109,7 @@ class ManageSpecialty extends Component {
             descriptionHTML: specialtyInput.descriptionHTML,
             descriptionMarkdown: specialtyInput.descriptionMarkdown,
             hasOldData: true,
+            previewimgURL: specialtyInput.image,
         })
     }
 
@@ -92,7 +118,7 @@ class ManageSpecialty extends Component {
         if (hasOldData === false) {
             let res = await createNewSpecialty({
                 name: this.state.name,
-                imageBase64: this.state.imageBase64,
+                image: this.state.imageBase64,
                 descriptionHTML: this.state.descriptionHTML,
                 descriptionMarkdown: this.state.descriptionMarkdown,
             })
@@ -104,6 +130,7 @@ class ManageSpecialty extends Component {
                     imageBase64: '',
                     descriptionHTML: '',
                     descriptionMarkdown: '',
+                    previewimgURL: '',
                 })
             } else {
                 toast.error('Adding a new specialty fails !')
@@ -128,6 +155,7 @@ class ManageSpecialty extends Component {
                     imageBase64: '',
                     descriptionHTML: '',
                     descriptionMarkdown: '',
+                    previewimgURL: '',
                 })
             } else {
                 toast.error('Edititng the specialty fails!')
@@ -155,19 +183,31 @@ class ManageSpecialty extends Component {
 
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý chuyên khoa</div>
+                <div className='ms-title'><FormattedMessage id="specialty.manage-specialty" /></div>
                 <div className='add-new-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên chuyên khoa</label>
+                        <label><FormattedMessage id="specialty.specialty-name" /></label>
                         <input className='form-control' type='text' value={this.state.name}
                             onChange={(event) => { this.handleOnChangeInput(event, 'name') }}
                         />
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Ảnh chuyên khoa</label>
-                        <input className='form-control-file' type='file' key={this.state.inputKey}
+                        <label><FormattedMessage id="specialty.specialty-picture" /></label>
+                        <div className='preview-img-container'>
+                            <input id='previewimg' type='file' hidden
+                                onChange={(event) => this.handleOnchangeImage(event)}
+                            />
+                            <label className='label-upload' htmlFor='previewimg'><FormattedMessage id="specialty.upload-image" /><i className="fas fa-upload"></i></label>
+                            <div className='preview-image'
+                                style={{ backgroundImage: `url(${this.state.previewimgURL})` }}
+                            // onClick={() => this.openPreviewImage()}
+                            >
+
+                            </div>
+                        </div>
+                        {/* <input className='form-control-file' type='file' key={this.state.inputKey}
                             onChange={(event) => this.handleOnchangeImage(event)}
-                        />
+                        /> */}
                     </div>
                     <div className='col-12'>
                         <MdEditor
@@ -178,9 +218,6 @@ class ManageSpecialty extends Component {
                         />
                     </div>
                     <div className='col-12'>
-                        {/* <button className='btn-save-specialty'
-                            onClick={() => this.handleSaveNewSpecialty()}
-                        >Lưu</button> */}
                         <button className={hasOldData === true ? "btn btn-warning px-3 my-4" : "btn btn-primary px-3 my-4"}
                             onClick={() => this.handleSaveNewSpecialty()}>
 
@@ -199,8 +236,8 @@ class ManageSpecialty extends Component {
                     <table id="customers">
                         <tbody>
                             <tr>
-                                <th>Name</th>
-                                <th>Actions</th>
+                                <th><FormattedMessage id="specialty.name" /></th>
+                                <th><FormattedMessage id="specialty.action" /></th>
                             </tr>
 
                             {arrSpecialty && arrSpecialty.map((item, index) => {

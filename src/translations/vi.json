@@ -108,7 +108,8 @@
             "province": "Tỉnh thành",
             "nameClinic": "Tên phòng khám",
             "addressClinic": "Địa chỉ phòng khám",
-            "note": "Ghi chú"
+            "note": "Ghi chú",
+            "select-clinic": "Chọn phòng khám"
         }
     },
     "specialty": {
@@ -119,6 +120,7 @@
         "edit": "Lưu thay đổi",
         "create": "Tạo chuyên khoa",
         "name": "Tên chuyênn khoa",
-        "action": "Chức năng"
+        "action": "Chức năng",
+        "select-specialty": "Chọn chuyên khoa"
     }
 }

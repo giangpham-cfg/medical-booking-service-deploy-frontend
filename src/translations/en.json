@@ -108,7 +108,8 @@
             "province": "Province",
             "nameClinic": "Clinic centre",
             "addressClinic": "Clinic's address",
-            "note": "Note"
+            "note": "Note",
+            "select-clinic": "Select a clinic"
         }
     },
     "specialty": {
@@ -119,6 +120,7 @@
         "edit": "Edit specialty",
         "create": "Create speciaty",
         "name": "Name of specialty",
-        "action": "Actions"
+        "action": "Actions",
+        "select-specialty": "Select a specialty"
     }
 }

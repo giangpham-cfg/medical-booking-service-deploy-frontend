@@ -80,7 +80,8 @@
             "price": "Examination price: ",
             "detail": "Show detail",
             "payment": "Patients can pay by: ",
-            "hide-price": "Hide detail"
+            "hide-price": "Hide detail",
+            "more-info": "More Information"
         },
         "booking-modal": {
             "title": "Medical booking information",

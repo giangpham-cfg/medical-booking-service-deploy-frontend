@@ -123,5 +123,17 @@
         "name": "Tên chuyênn khoa",
         "action": "Chức năng",
         "select-specialty": "Chọn chuyên khoa"
+    },
+    "clinic": {
+        "manage-clinic": "Quản lý phòng khám",
+        "clinic-name": "Tên phòng khám",
+        "clinic-picture": "Ảnh phòng khám",
+        "upload-image": "Tải ảnh",
+        "edit": "Lưu thay đổi",
+        "create": "Tạo phòng khám",
+        "name": "Tên phòng khám",
+        "action": "Chức năng",
+        "address": "Địa chỉ",
+        "clinic-address": "Địa chỉ phòng khám"
     }
 }

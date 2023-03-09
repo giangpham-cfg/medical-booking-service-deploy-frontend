@@ -119,9 +119,21 @@
         "specialty-picture": "Picture of specialty",
         "upload-image": "Upload Image",
         "edit": "Edit specialty",
-        "create": "Create speciaty",
+        "create": "Create specialty",
         "name": "Name of specialty",
         "action": "Actions",
         "select-specialty": "Select a specialty"
+    },
+    "clinic": {
+        "manage-clinic": "Manage clinics",
+        "clinic-name": "Name of clinic",
+        "clinic-picture": "Picture of clinic",
+        "upload-image": "Upload Image",
+        "edit": "Edit clinic",
+        "create": "Create clinic",
+        "name": "Name of clinic",
+        "action": "Actions",
+        "address": "Address",
+        "clinic-address": "Clinic address"
     }
 }

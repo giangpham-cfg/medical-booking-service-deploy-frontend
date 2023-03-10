@@ -130,7 +130,7 @@ class ManageClinic extends Component {
             })
             if (res && res.errCode === 0) {
                 toast.success('Editing the clinic succeeds!')
-                await this.getAllSpecialtyData();
+                await this.getAllClinicData();
                 this.setState({
                     name: '',
                     address: '',

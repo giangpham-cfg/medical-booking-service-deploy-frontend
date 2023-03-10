@@ -3,12 +3,22 @@
     .description-specialty {
         // height: 200px;
         padding: 20px 100px;
+        background-color: #eeeeee;
+
+        .description-content {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+            border-radius: 8px;
+
+        }
     }
 
    
 
     .detail-specialty-body {
-        padding: 0 100px;
+        padding: 10px 100px;
         background-color: #eeeeee;
 
         .search-sp-doctor {
@@ -37,7 +47,6 @@
         background-color: #fff;
         box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
         border-radius: 8px;
-        border-bottom: none;
 
         .dt-content-left {
             width: 50%;

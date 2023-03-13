@@ -28,6 +28,7 @@ class BookingModal extends Component {
             doctorId: '',
             genders: '',
             timeType: '',
+            date: '',
         }
     }
 
@@ -66,9 +67,11 @@ class BookingModal extends Component {
                 // console.log('check dataTime:', this.props.dataTime)
                 let doctorId = this.props.dataTime.doctorId;
                 let timeType = this.props.dataTime.timeType;
+                let date = this.props.dataTime.date;
                 this.setState({
                     doctorId: doctorId,
-                    timeType: timeType
+                    timeType: timeType,
+                    date: date,
                 })
             }
         }
@@ -114,18 +117,18 @@ class BookingModal extends Component {
         return ''
     }
 
-    buildDateBooking = (dataTime) => {
-        let { language } = this.props;
-        if (dataTime && !_.isEmpty(dataTime)) {
+    // buildDateBooking = (dataTime) => {
+    //     let { language } = this.props;
+    //     if (dataTime && !_.isEmpty(dataTime)) {
 
-            let date = language === LANGUAGES.VI ?
-                this.capitalizeFirstLetter(moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY'))
-                :
-                moment.unix(+dataTime.date / 1000).locale('en').format('ddd - DD/MM/YYYY')
-            return `${date}`
-        }
-        return ''
-    }
+    //         let date = language === LANGUAGES.VI ?
+    //             this.capitalizeFirstLetter(moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY'))
+    //             :
+    //             moment.unix(+dataTime.date / 1000).locale('en').format('ddd - DD/MM/YYYY')
+    //         return `${date}`
+    //     }
+    //     return ''
+    // }
 
     buildDoctorName = (dataTime) => {
         let { language } = this.props;
@@ -144,7 +147,7 @@ class BookingModal extends Component {
         let birthdate = new Date(this.state.birthday).getTime();
         let timeString = this.buildTimeBooking(this.props.dataTime);
         let doctorName = this.buildDoctorName(this.props.dataTime);
-        let date = this.buildDateBooking(this.props.dataTime);
+        let date = this.state.date;
 
         let res = await postPatientBookAppointment({
             fullName: this.state.fullName,

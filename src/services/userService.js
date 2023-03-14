@@ -1,4 +1,5 @@
 import axios from '../axios'
+
 const handleLoginApi = (email, password) => {
     return axios.post('/api/login', { email, password });
     // 
@@ -124,6 +125,10 @@ const getAllPatientForDoctor = (data) => {
     return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`)
 }
 
+const postSendRemedy = (data) => {
+    return axios.post('/api/send-remedy', data)
+}
+
 export {
     handleLoginApi, getAllUsers,
     createNewUserService, deleteUserService,
@@ -137,7 +142,7 @@ export {
     editSpecialtyService, getAllDetailSpecialtyById,
     createNewClinic, getAllClinic, deleteClinicService,
     editClinicService, getAllDetailClinicById,
-    getAllPatientForDoctor,
+    getAllPatientForDoctor, postSendRemedy
 }
 
 

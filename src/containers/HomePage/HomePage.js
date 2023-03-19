@@ -4,7 +4,6 @@ import HomeHeader from './HomeHeader';
 import Specialty from './Section/Specialty';
 import MedicalFacility from './Section/MedicalFacility';
 import OutstandingDoctor from './Section/OutstandingDoctor';
-import Handbook from './Section/Handbook';
 import About from './Section/About';
 import HomeFooter from './HomeFooter';
 import './HomePage.scss';
@@ -20,27 +19,25 @@ class HomePage extends Component {
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1
-          };
+        };
 
         return (
             <div>
-                <HomeHeader 
+                <HomeHeader
                     isShowBanner={true}
                 />
                 <Specialty
-                    settings = {settings}
+                    settings={settings}
                 />
-                <MedicalFacility 
-                    settings = {settings}
+                <MedicalFacility
+                    settings={settings}
                 />
                 <OutstandingDoctor
-                    settings = {settings}
+                    settings={settings}
                 />
-                <Handbook
-                    settings = {settings}
+                <About
                 />
-                <About/>
-                <HomeFooter/>
+                <HomeFooter />
             </div>
         );
     }

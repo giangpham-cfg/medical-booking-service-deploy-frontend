@@ -5,7 +5,7 @@
     background-color: #fff;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10000;
 
     .home-header-content {
         width: 100%;
@@ -16,18 +16,19 @@
             width: 15%;
             display: flex;
             align-items: center;
+            overflow: hidden;
 
             .header-logo {
                 width: 100%;
                 cursor: pointer;
-                transform: scale(0.7, 0.7);
+                transform: scale(0.65, 0.65);
                 overflow: hidden;
             }
-            i {
-                font-size: 25px;
-                color: gray;
-                cursor: pointer;
-            }
+            // i {
+            //     font-size: 25px;
+            //     color: gray;
+            //     cursor: pointer;
+            // }
         }
 
         .center-content {
@@ -37,6 +38,12 @@
             align-items: center;
 
             .child-content {
+                cursor: pointer;
+
+                    &:hover {
+                        color: #2fc0d7;
+                    }
+
                 .subs-title {
                     font-weight: 400;
                     font-size: 12px;
@@ -51,7 +58,7 @@
             justify-content: flex-end;
 
             .support {
-               padding: 50px;
+               padding: 20px;
                display: flex;
                align-items: center;
                cursor: pointer;
@@ -60,6 +67,12 @@
                 font-size: 15px;
                 margin-right: 5px;
                }
+            }
+
+            .btn-login {
+                margin: 0 20px;
+                cursor: pointer;
+                border-radius: 3px;
             }
 
             .language-vi {
@@ -117,7 +130,7 @@
             color: #fff;
             text-shadow: 1px 1px 1px #333;
             margin-bottom: 5px;
-            margin-top: 90px;
+            margin-top: 150px;
         }
     
         .title2 {
@@ -189,11 +202,11 @@
                 .text-child {
                     font-size: 16px;
                     font-weight: 600;
-                    cursor: pointer;
+                    // cursor: pointer;
 
-                    &:hover {
-                        color: #2fc0d7;
-                    }
+                    // &:hover {
+                    //     color: #2fc0d7;
+                    // }
                 }
             }   
         }

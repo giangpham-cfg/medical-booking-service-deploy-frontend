@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 import { handleLoginApi } from '../../services/userService';
-
+import logo from '../../assets/web-logo.png';
 
 
 class Login extends Component {
@@ -115,11 +115,12 @@ class Login extends Component {
                             <span className='forgot-password'>Forgot your password</span>
                         </div>
                         <div className='col-12 text-center mt-3'>
-                            <span className='text-other-login'>Or login with:</span>
+                            <span className='text-other-login'>MEDICAL BOOKING SERVICE</span>
                         </div>
                         <div className='col-12 social-login'>
-                            <i className="fab fa-google-plus-g google"></i>
-                            <i className="fab fa-facebook-f facebook"></i>
+                            <img className='logo' src={logo} />
+                            {/* <i className="fab fa-google-plus-g google"></i>
+                            <i className="fab fa-facebook-f facebook"></i> */}
                         </div>
                     </div>
                 </div>

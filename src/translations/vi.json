@@ -6,8 +6,8 @@
         "select-hospital": "Chọn bệnh viện phòng khám",
         "doctor": "Bác sĩ",
         "select-doctor": "Chọn bác sĩ giỏi",
-        "package": "Gói khám",
-        "check-health": "Khám sức khỏe tổng quát",
+        "package": "Thông tin chung",
+        "check-health": "Hướng dẫn sử dụng hệ thống",
         "support": "Hỗ trợ",
         "welcome": "Xin chào"
     },
@@ -19,7 +19,8 @@
         "child3": "Khám tổng quát",
         "child4": "Xét nghiệm y học",
         "child5": "Sức khỏe tinh thần",
-        "child6": "Khám nha khoa"
+        "child6": "Khám nha khoa",
+        "placeholder": "Tìm chuyên khoa khám bệnh"
     },
     "menu": {
         "admin": {
@@ -31,9 +32,7 @@
             "clinic": "Phòng khám",
             "manage-clinic": "Quản lý phòng khám",
             "specialty": "Chuyên khoa",
-            "manage-specialty": "Quản lý chuyên khoa",
-            "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang"
+            "manage-specialty": "Quản lý chuyên khoa"
         },
         "doctor": {
             "manage-schedule": "Quản lý kế hoạch khám bệnh",
@@ -60,7 +59,9 @@
     "homepage": {
         "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
         "more-info": "Xem thêm",
-        "specialty-popular": "Chuyên khoa phổ biến"
+        "specialty-popular": "Chuyên khoa phổ biến",
+        "medical-centre": "Cơ sở y tế nổi bật",
+        "about": "Hướng dẫn sử dụng hệ thống đặt lịch hẹn khám bệnh"
     },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh của bác sĩ",

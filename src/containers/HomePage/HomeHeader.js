@@ -20,6 +20,17 @@ class HomeHeader extends Component {
         }
     }
 
+    handleLogin = () => {
+        if (this.props.history) {
+            this.props.history.push(`/login`)
+        }
+    }
+
+    handlescroll = (id) => {
+        const anchor = document.querySelector(id)
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+
     render() {
         // console.log('check props: ', this.props)
         let language = this.props.language;
@@ -28,29 +39,42 @@ class HomeHeader extends Component {
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
-                            <i className="fas fa-bars"></i>
+                            {/* <i className="fas fa-bars"></i> */}
                             <img className='header-logo' src={logo} onClick={() => this.returnToHome()} />
                         </div>
                         <div className='center-content'>
-                            <div className='child-content'>
+                            <div className='child-content'
+                                onClick={() => this.handlescroll('#specialty-section')}
+                            >
                                 <div><b><FormattedMessage id="homeheader.specialty" /></b></div>
                                 <div className='subs-title'><FormattedMessage id="homeheader.searchdoctor" /></div>
                             </div>
-                            <div className='child-content'>
+                            <div className='child-content'
+                                onClick={() => this.handlescroll('#clinic-section')}
+                            >
                                 <div><b><FormattedMessage id="homeheader.health-facility" /></b></div>
                                 <div className='subs-title'><FormattedMessage id="homeheader.select-hospital" /></div>
                             </div>
-                            <div className='child-content'>
+                            <div className='child-content'
+                                onClick={() => this.handlescroll('#doctor-section')}
+                            >
                                 <div><b><FormattedMessage id="homeheader.doctor" /></b></div>
                                 <div className='subs-title'><FormattedMessage id="homeheader.select-doctor" /></div>
                             </div>
-                            <div className='child-content'>
+                            <div className='child-content'
+                                onClick={() => this.handlescroll('#about-section')}
+                            >
                                 <div><b><FormattedMessage id="homeheader.package" /></b></div>
                                 <div className='subs-title'><FormattedMessage id="homeheader.check-health" /></div>
                             </div>
                         </div>
                         <div className='right-content'>
-                            <div className='support'><i className="fas fa-question-circle"></i><FormattedMessage id="homeheader.support" /></div>
+                            {/* <div className='support'><i className="fas fa-question-circle"></i><FormattedMessage id="homeheader.support" /></div> */}
+                            <button className='btn-primary btn-login'
+                                onClick={() => this.handleLogin()}
+                            >
+                                Login
+                            </button>
                             <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
                             <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
                         </div>
@@ -61,10 +85,10 @@ class HomeHeader extends Component {
                         <div className='content-up'>
                             <div className='title1'><FormattedMessage id="banner.title1" /></div>
                             <div className='title2'><FormattedMessage id="banner.title2" /></div>
-                            <div className='search'>
+                            {/* <div className='search'>
                                 <i className="fas fa-search"></i>
-                                <input type='text' placeholder='Tìm chuyên khoa khám bệnh' />
-                            </div>
+                                <input type='text' placeholder='Find a medical specialist' />
+                            </div> */}
                         </div>
                         <div className='content-down'>
                             <div className='options'>

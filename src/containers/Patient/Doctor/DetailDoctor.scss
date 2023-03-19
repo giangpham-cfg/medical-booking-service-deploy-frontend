@@ -7,7 +7,10 @@
 
         .content-left {
             width: 20%;
-            background: center center no-repeat;
+            // background: center center no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -54,13 +57,16 @@
         margin-bottom: 20px;
         padding: 10px 100px;
 
+        h1,
+        h2,
         h3 {
             font-size: 17px;
         }
     }
 
     .comment-doctor {
-        height: 50px;
+        // height: 50px;
+        padding: 10px 100px;
     }
 }
 

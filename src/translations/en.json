@@ -6,8 +6,8 @@
         "select-hospital": "Select a hospital",
         "doctor": "Doctor",
         "select-doctor": "Select a doctor",
-        "package": "Checkup package",
-        "check-health": "General health check",
+        "package": "General information",
+        "check-health": "How to use the system",
         "support": "Support",
         "welcome": "Welcome"
     },
@@ -19,7 +19,8 @@
         "child3": "General examination",
         "child4": "Medical test",
         "child5": "Mental health",
-        "child6": "Dental examination"
+        "child6": "Dental examination",
+        "placeholder": "Find a medical specialist"
     },
     "menu": {
         "admin": {
@@ -31,9 +32,7 @@
             "clinic": "Clinics",
             "manage-clinic": "Manage clinics",
             "specialty": "Specialties",
-            "manage-specialty": "Manage specialties",
-            "handbook": "Handbook",
-            "manage-handbook": "Manage handbook"
+            "manage-specialty": "Manage specialties"
         },
         "doctor": {
             "manage-schedule": "Manage doctor's schedule",
@@ -60,7 +59,9 @@
     "homepage": {
         "outstanding-doctor": "Outstanding doctors of the week",
         "more-info": "More info",
-        "specialty-popular": "Popular Specialties"
+        "specialty-popular": "Popular specialties",
+        "medical-centre": "Medical centres ",
+        "about": "Instructions for using the booking system"
     },
     "manage-schedule": {
         "title": "Manage doctor's examination plan",

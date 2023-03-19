@@ -43,13 +43,6 @@ export const adminMenu = [
         ]
     },
 
-    { //Quản lý cẩm nang
-        name: 'menu.admin.handbook', menus: [
-            {
-                name: 'menu.admin.manage-handbook', link: '/system/manage-handbook'
-            },
-        ]
-    },
 ];
 
 export const doctorMenu = [

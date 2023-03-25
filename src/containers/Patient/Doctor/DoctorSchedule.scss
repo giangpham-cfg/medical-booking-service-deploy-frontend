@@ -63,6 +63,10 @@
 
                 .btn-en {
                     min-width: 170px;
+
+                    @media (max-width: 768px) {
+                        min-width: 130px;
+                    }
                 }
 
                 .no-schedule {

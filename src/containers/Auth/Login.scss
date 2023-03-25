@@ -8,12 +8,15 @@
         bottom: 0;
         left: 0;
         right: 0;
-        width: 400px;
+        width: 25vw;
         height: 450px;
         margin: auto;
         border-radius: 10px;
         background-color: white;
 
+        @media (max-width: 768px) {
+            width: 80vw;
+        }
         .login-content {
             padding: 10px;
 

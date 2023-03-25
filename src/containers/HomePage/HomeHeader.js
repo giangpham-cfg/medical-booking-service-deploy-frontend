@@ -6,8 +6,16 @@ import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils/constant';
 import { changeLanguageApp } from '../../store/actions';
 import { withRouter } from 'react-router';
+import LeftNavbar from './LeftNavbar';
 
 class HomeHeader extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: true
+        }
+    }
 
     changeLanguage = (language) => {
         //fire redux event: actions
@@ -31,43 +39,28 @@ class HomeHeader extends Component {
         anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
 
+    handleBurgerNavbar = () => {
+        let { isOpen } = this.state
+        this.setState({
+            isOpen: !isOpen
+        })
+    }
+
     render() {
         // console.log('check props: ', this.props)
         let language = this.props.language;
+        let { isOpen } = this.state;
         return (
             <React.Fragment>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
-                            {/* <i className="fas fa-bars"></i> */}
+                            <i className={isOpen ? "fas fa-bars" : "fas fa-times"} onClick={() => this.handleBurgerNavbar()}></i>
                             <img className='header-logo' src={logo} onClick={() => this.returnToHome()} />
                         </div>
-                        <div className='center-content'>
-                            <div className='child-content'
-                                onClick={() => this.handlescroll('#specialty-section')}
-                            >
-                                <div><b><FormattedMessage id="homeheader.specialty" /></b></div>
-                                <div className='subs-title'><FormattedMessage id="homeheader.searchdoctor" /></div>
-                            </div>
-                            <div className='child-content'
-                                onClick={() => this.handlescroll('#clinic-section')}
-                            >
-                                <div><b><FormattedMessage id="homeheader.health-facility" /></b></div>
-                                <div className='subs-title'><FormattedMessage id="homeheader.select-hospital" /></div>
-                            </div>
-                            <div className='child-content'
-                                onClick={() => this.handlescroll('#doctor-section')}
-                            >
-                                <div><b><FormattedMessage id="homeheader.doctor" /></b></div>
-                                <div className='subs-title'><FormattedMessage id="homeheader.select-doctor" /></div>
-                            </div>
-                            <div className='child-content'
-                                onClick={() => this.handlescroll('#about-section')}
-                            >
-                                <div><b><FormattedMessage id="homeheader.package" /></b></div>
-                                <div className='subs-title'><FormattedMessage id="homeheader.check-health" /></div>
-                            </div>
-                        </div>
+                        <LeftNavbar
+                            isOpenLeftNavbar={isOpen}
+                        />
                         <div className='right-content'>
                             {/* <div className='support'><i className="fas fa-question-circle"></i><FormattedMessage id="homeheader.support" /></div> */}
                             <button className='btn-primary btn-login'

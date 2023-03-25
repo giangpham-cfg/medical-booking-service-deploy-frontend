@@ -1,14 +1,24 @@
 //reset slick slider css
+// .slick-list {
+//     padding-bottom: 4% !important;
+// }
 
 .slick-prev {
     // position: relative !important;
-    left: -30px !important;
+    left: -25px !important;
     z-index: 1000 !important;
     height: 48px !important;
     width: 44px !important;
     background: #fff !important;
     border: 2px solid #d7d7d7 !important;
+    top: 35%;
 
+    @media (max-width: 768px) {
+        height: 24px !important;
+        width: 22px !important;
+        top: 20%;
+        left: -5px !important;
+    }
     &:hover {
         background: #fcf4f4 !important;
     }
@@ -21,13 +31,20 @@
 }
 
 .slick-next {
-    right: -10px;
+    right: -20px;
     z-index: 1000 !important;
     height: 48px !important;
     width: 44px !important;
-    
+    top: 35%;
     background: #fff !important;
     border: 2px solid #d7d7d7 !important;
+
+    @media (max-width: 768px) {
+        height: 24px !important;
+        width: 22px !important;
+        top: 20%;
+        right: -5px !important;
+    }
 
     &:hover {
         background: #fcf4f4 !important;
@@ -42,6 +59,7 @@
 
     &.section-specialty {
         background: #f5f5f5;
+        padding-bottom: 2%;
     }
 
     &.section-outstanding-doctor {
@@ -49,13 +67,13 @@
     }
 
     &.section-about {
-        height: 500px !important;
+        height: 100% !important;
     }
 
     .section-body {
 
         .section-customize {
-
+            font-size: calc(0.45rem + 0.5vw);
             // &.section-outstanding-doctor {
             //     border: 1px solid red;
             // }
@@ -75,14 +93,23 @@
                     width: 120px;
                     height: 120px;
                     border-radius: 50%;
+
+                    @media (max-width: 768px) {
+                        height: 75px;
+                    }
                }
 
                background-position: center center;
                background-repeat: no-repeat;
                background-size: 100% 100%;
                background-color: #eee;
-               height: 170px;
-               width: 278px;
+               height: 25vh;
+               width: 20vw;
+
+               @media (max-width: 768px) {
+                height: 16vh;
+                width: 23vw;
+               }
             }
         }
     }
@@ -90,33 +117,40 @@
 
 
 .section-share {
-    height: 330px;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 2%;
     
     .section-container {
-        margin: 0 100px;
+        margin: 0 7vw;
         display: flex;
         flex-direction: column;
+
+        @media (max-width: 768px) {
+            margin: 0 2vw;
+        }
     
         .section-header {
-            height: 60px;
-            margin-bottom: 30px;
-            padding-top: 30px;
+            height: 30%;
+            margin-bottom: 2%;
+            padding-top: 3%;
 
             .title-section {
-                font-size: 22px;
+                font-size: calc(0.7rem + 1vw);
                 font-weight: 600;
             }
 
             .btn-section {
                 float: right;
                 display: block;
-                padding: 10px 15px;
+                padding: 1% 1%;
                 border: none;
                 outline: none;
                 background: #ebebeb;
                 color: black;
                 cursor: pointer;
                 text-transform: uppercase;
+                font-size: calc(0.5rem + 0.5vw);
 
                 &:hover {
                     color: #fff;
@@ -135,12 +169,12 @@
 
         .customize-border {
             border: 1px solid #d7d7d7;
-            padding: 20px;
+            padding: 5%;
 
             .outer-bg {
                 display: flex;
                 justify-content: center;
-                margin-bottom: 10px;
+                margin-bottom: 4%;
             }
         }
     }
@@ -148,9 +182,8 @@
 
 .home-footer {
     text-align: center;
-    // background: #d7d7d7;
-    padding: 8px 0;
     background: #f5f5f5;
+    padding: 2%;
 
     a {
         text-decoration: none;
@@ -158,27 +191,37 @@
 }
 
 .section-about {
-    margin: 30px 100px;
+    margin: 0 7vw;
+
+    @media (max-width: 768px) {
+        margin: 0 2vw;
+    }
 
     .section-about-header {
-        padding: 30px 0;
-        font-size: 22px;
+        padding: 20px 0;
+        font-size: calc(0.7rem + 1vw);
         font-weight: 600;
     };
 
     .section-about-content {
         display: flex;
-        gap: 100px;
+        gap: 5vw;
         width: 100%;
+        height: 100%;
+        justify-content: center;
 
-        .content-left {
-            width: 50%;
+        @media (max-width: 768px) {
+            
         }
+
+        // .content-left {
+        //     width: 50%;
+        // }
         
-        .content-right {
-            background-image: url('../../assets/about/doctor-booking.jpg');
-            width: 38%;
-        }
+        // .content-right {
+        //     background-image: url('../../assets/about/doctor-booking.jpg');
+        //     width: 30%;
+        // }
     }
 
 }

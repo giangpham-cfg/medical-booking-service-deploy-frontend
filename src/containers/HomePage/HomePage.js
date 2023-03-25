@@ -35,8 +35,7 @@ class HomePage extends Component {
                 <OutstandingDoctor
                     settings={settings}
                 />
-                <About
-                />
+                <About />
                 <HomeFooter />
             </div>
         );

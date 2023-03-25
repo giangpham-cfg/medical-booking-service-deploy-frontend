@@ -1,8 +1,9 @@
 .detail-specialty-container {
+    font-size: calc(0.5rem + 0.5vw);
 
     .description-specialty {
         // height: 200px;
-        padding: 20px 100px;
+        padding: 20px 5%;
         background-color: #eeeeee;
 
         .description-content {
@@ -11,18 +12,23 @@
             margin-top: 20px;
             box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
             border-radius: 8px;
-
+            
+            @media (max-width: 768px) {
+                margin-top: 0;
+            }
         }
     }
 
-   
-
     .detail-specialty-body {
-        padding: 10px 100px;
+        padding: 10px 5%;
         background-color: #eeeeee;
 
         .search-sp-doctor {
             padding-top: 15px;
+
+            @media (max-width: 768px) {
+                padding-top: 0;
+            }
 
             select {
                 padding: 5px 8px;
@@ -48,10 +54,14 @@
         box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
         border-radius: 8px;
 
+        @media (max-width: 768px) {
+            margin: 10px 0;
+        }
+
         .dt-content-left {
             width: 50%;
             border-right: 1px solid #ddd;
-            padding-right: 20px;
+            padding-right: 1vw;
         }
 
         .dt-content-right {

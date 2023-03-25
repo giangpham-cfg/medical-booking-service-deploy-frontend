@@ -11,12 +11,12 @@
     width: 44px !important;
     background: #fff !important;
     border: 2px solid #d7d7d7 !important;
-    top: 35%;
+    top: 45%;
 
     @media (max-width: 768px) {
         height: 24px !important;
         width: 22px !important;
-        top: 20%;
+        // top: 20%;
         left: -5px !important;
     }
     &:hover {
@@ -35,14 +35,14 @@
     z-index: 1000 !important;
     height: 48px !important;
     width: 44px !important;
-    top: 35%;
+    top: 45%;
     background: #fff !important;
     border: 2px solid #d7d7d7 !important;
 
     @media (max-width: 768px) {
         height: 24px !important;
         width: 22px !important;
-        top: 20%;
+        // top: 20%;
         right: -5px !important;
     }
 

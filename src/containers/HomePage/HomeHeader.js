@@ -34,10 +34,10 @@ class HomeHeader extends Component {
         }
     }
 
-    handlescroll = (id) => {
-        const anchor = document.querySelector(id)
-        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
+    // handlescroll = (id) => {
+    //     const anchor = document.querySelector(id)
+    //     anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    // }
 
     handleBurgerNavbar = () => {
         let { isOpen } = this.state

@@ -21,6 +21,11 @@ class LeftNavbar extends Component {
         }
     }
 
+    handlescroll = (id) => {
+        const anchor = document.querySelector(id)
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+
     render() {
 
         let { isOpenLeftNavbar } = this.props;
@@ -29,19 +34,27 @@ class LeftNavbar extends Component {
             <>
                 {/* {isOpenLeftNavbar === true && */}
                 <div className={`center-content ${isOpenLeftNavbar ? 'show' : ''}`}>
-                    <div className='child-content'>
+                    <div className='child-content'
+                        onClick={() => this.handlescroll('#specialty-section')}
+                    >
                         <div><b><FormattedMessage id="homeheader.specialty" /></b></div>
                         <div className='subs-title'><FormattedMessage id="homeheader.searchdoctor" /></div>
                     </div>
-                    <div className='child-content'>
+                    <div className='child-content'
+                        onClick={() => this.handlescroll('#clinic-section')}
+                    >
                         <div><b><FormattedMessage id="homeheader.health-facility" /></b></div>
                         <div className='subs-title'><FormattedMessage id="homeheader.select-hospital" /></div>
                     </div>
-                    <div className='child-content'>
+                    <div className='child-content'
+                        onClick={() => this.handlescroll('#doctor-section')}
+                    >
                         <div><b><FormattedMessage id="homeheader.doctor" /></b></div>
                         <div className='subs-title'><FormattedMessage id="homeheader.select-doctor" /></div>
                     </div>
-                    <div className='child-content'>
+                    <div className='child-content'
+                        onClick={() => this.handlescroll('#about-section')}
+                    >
                         <div><b><FormattedMessage id="homeheader.package" /></b></div>
                         <div className='subs-title'><FormattedMessage id="homeheader.check-health" /></div>
                     </div>
